@@ -20,4 +20,9 @@ December Results
 
 
 ## Summary
+The results of this analysis indicate that the business should see year-round demand in Oahu. The following queries can also be used to help inform this business decision:
 
+* dec_coldrain = session.query(Measurement.date, Measurement.tobs).filter(extract('month', Measurement.date) == 12, Measurement.tobs < 70, Measurement.prcp >= 0.1).all()
+* june_coldrain = session.query(Measurement.date, Measurement.tobs).filter(extract('month', Measurement.date) == 6, Measurement.tobs < 70, Measurement.prcp >= 0.1).all()
+
+While the summary statistics offer a positive outlook on weather in Oahu, these queries will allow the owner to understand how often days will occur where ice cream demand will be low. The criteria for low demand was considered a temperature below 70 degress and precipitation totals over 0.1. By running the above queries and looking at the length of each list, it can be seen that the owner should expect ~3x as many days of low demand as they will in June. This should be factored to any forecasts for revenue in December. The results of these queries can be seen in the "SurfsUp_Challenge" Jupyter Notebook. 
